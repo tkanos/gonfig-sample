@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 	"path"
-	"path/filepath"
+	"strings"
 
 	"github.com/tkanos/gonfig"
 )
@@ -32,8 +32,13 @@ func main() {
 }
 
 func getFileName() string {
-
-	filePath := path.Join(filepath.Dir(os.Args[0]), "config.json")
+	env := os.Getenv("ENV")
+	if len(env) == 0 {
+		env = "development"
+	}
+	filename := []string{"config/", "config.", env, ".json"}
+	dirname, _ := os.Getwd()
+	filePath := path.Join(dirname, strings.Join(filename, ""))
 
 	return filePath
 }
