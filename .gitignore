@@ -22,3 +22,7 @@ _testmain.go
 *.exe
 *.test
 *.prof
+
+
+# Visual Studio Code conf files
+.vscode
