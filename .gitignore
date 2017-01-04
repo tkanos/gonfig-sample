@@ -26,3 +26,4 @@ _testmain.go
 
 # Visual Studio Code conf files
 .vscode
+debug
