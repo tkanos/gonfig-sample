@@ -36,9 +36,9 @@ func getFileName() string {
 	if len(env) == 0 {
 		env = "development"
 	}
-	filename := []string{"config/", "config.", env, ".json"}
-	dirname, _ := os.Getwd()
-	filePath := path.Join(dirname, strings.Join(filename, ""))
+	filename := []string{"config.", env, ".json"}
+	_, dirname, _, _ := runtime.Caller(0)
+	filePath := path.Join(filepath.Dir(dirname), strings.Join(filename, ""))
 
 	return filePath
 }
